@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "prepare": "cd .. && husky install TypeScript/.husky"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +14,7 @@
     "@types/jest": "^29.4.0",
     "prettier": "2.8.4",
     "ts-jest": "^29.0.5",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "husky": "^8.0.0"
   }
 }
