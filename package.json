@@ -1,0 +1,16 @@
+{
+  "name": "infinixtc-katas",
+  "version": "1.0.0",
+  "description": "Repo for katas we work on during our InfiniXTC meetups.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm t"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.4.0",
+    "ts-jest": "^29.0.5",
+    "typescript": "^4.9.5"
+  }
+}
