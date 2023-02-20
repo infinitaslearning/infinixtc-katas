@@ -4,7 +4,7 @@
   "description": "Repo for katas we work on during our InfiniXTC meetups.",
   "main": "index.js",
   "scripts": {
-    "test": "npm t"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
