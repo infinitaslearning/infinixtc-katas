@@ -1,4 +1,4 @@
-import { fizzBuzz } from './fizz-buzz'
+import { fizzBuzz, isFizz } from './fizz-buzz'
 
 describe('Fizz Buzz', () => {
   it('returns 100 elements', () => {
@@ -7,5 +7,9 @@ describe('Fizz Buzz', () => {
 
   it('return 1 as the first element', () => {
     expect(fizzBuzz()[0]).toEqual("1")
+  })
+
+  it('return "Fizz" if number is divisible by 3', () => {
+    expect(isFizz(3)).toEqual(true)
   })
 })
