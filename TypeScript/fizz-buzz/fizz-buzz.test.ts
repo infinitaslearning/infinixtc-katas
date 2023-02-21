@@ -13,7 +13,11 @@ describe('Fizz Buzz', () => {
     checkNthElement(1, '1')
   })
 
-  it.each([3, 6, 9, 42, 96])('return "Fizz" if number is divisible by 3', (n) => {
+  it.each([3, 6, 9, 42, 96])('return "Fizz" if number is divisible by 3 (%i)', (n) => {
     checkNthElement(n, 'Fizz')
+  })
+
+  it.each([5, 10, 20, 40, 95])('return "Buzz" if number is divisible by 5 (%i)', (n) => {
+    checkNthElement(n, 'Buzz')
   })
 })
