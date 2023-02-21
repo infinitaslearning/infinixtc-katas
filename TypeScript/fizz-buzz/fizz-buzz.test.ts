@@ -6,6 +6,6 @@ describe('Fizz Buzz', () => {
   })
 
   it('return 1 as the first element', () => {
-    expect(fizzBuzz()[0]).toEqual(1)
+    expect(fizzBuzz()[0]).toEqual("1")
   })
 })

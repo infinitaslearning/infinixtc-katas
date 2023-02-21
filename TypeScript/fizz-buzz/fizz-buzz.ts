@@ -1,3 +1,4 @@
 export const fizzBuzz = (): string[] => {
-  return [1, ...new Array(99)]
+  const array = ["1", ...new Array(99)]
+  return array
 }
