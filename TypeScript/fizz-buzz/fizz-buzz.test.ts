@@ -1,4 +1,8 @@
-import { fizzBuzz, isFizz } from './fizz-buzz'
+import { fizzBuzz } from './fizz-buzz'
+
+const checkNthElement = (n: number, value: string) => {
+  expect(fizzBuzz()[n - 1]).toEqual(value)
+}
 
 describe('Fizz Buzz', () => {
   it('returns 100 elements', () => {
@@ -6,10 +10,10 @@ describe('Fizz Buzz', () => {
   })
 
   it('return 1 as the first element', () => {
-    expect(fizzBuzz()[0]).toEqual("1")
+    checkNthElement(1, '1')
   })
 
   it('return "Fizz" if number is divisible by 3', () => {
-    expect(isFizz(3)).toEqual(true)
+    checkNthElement(3, 'Fizz')
   })
 })

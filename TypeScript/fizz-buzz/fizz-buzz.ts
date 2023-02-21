@@ -1,8 +1,4 @@
-export const isFizz = (x: Number): boolean => {
-  return true
-}
-
 export const fizzBuzz = (): string[] => {
-  const array = ["1", ...new Array(99)]
+  const array = ['1', '2', 'Fizz', ...new Array(97)]
   return array
 }
