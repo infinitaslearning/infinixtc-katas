@@ -1,7 +1,7 @@
 import { fizzBuzz } from './fizz-buzz'
 
 describe('Fizz Buzz', () => {
-  it('is a passing test just to make sure everything works', () => {
-    expect(fizzBuzz()).toEqual('it works!')
+  it('returns 100 elements', () => {
+    expect(fizzBuzz().length).toEqual(100)
   })
 })

@@ -1,3 +1,3 @@
-export const fizzBuzz = () => {
-  return 'it works!'
+export const fizzBuzz = (): string[] => {
+  return new Array(100)
 }
