@@ -30,8 +30,17 @@ describe('Ping Pong', () => {
   it('contains Fizz at every third element', () => {
     const result = fizzBuzz()
 
-    for (let index = 2; index < result.length; index + 3) {
+    for (let index = 2; index < result.length; index += 3) {
       expect(result[index]).toMatch(/Fizz/)
     }
   })
+
+  it('contains Buzz at every fifth element', () => {
+    const result = fizzBuzz()
+
+    for (let index = 4; index < result.length; index += 5) {
+      expect(result[index]).toMatch(/Buzz/)
+    }
+  })  
+
 })
