@@ -18,4 +18,9 @@ describe('Ping Pong', () => {
       expect(element.length).toBeGreaterThan(0)
     })
   })
+
+  it('the 0th element should be 1', () => {
+    expect(fizzBuzz()[0]).toEqual('1')
+  })
+  
 })
