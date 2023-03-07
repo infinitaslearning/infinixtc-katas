@@ -22,5 +22,8 @@ describe('Ping Pong', () => {
   it('the 0th element should be 1', () => {
     expect(fizzBuzz()[0]).toEqual('1')
   })
-  
+
+  it('contains Fizz elements', () => {
+    expect(fizzBuzz()).toContain('Fizz')
+  })
 })
