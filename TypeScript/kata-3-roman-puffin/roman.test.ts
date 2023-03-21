@@ -39,4 +39,8 @@ describe('roman tests', () => {
     }
     expect(toRoman(input)).toBe(options[input as keyof typeof options])
   })
+
+  it('converts 1999 to MCMXCIX', () => {
+    expect(toRoman(1999)).toBe('MCMXCIX')
+  })
 })
