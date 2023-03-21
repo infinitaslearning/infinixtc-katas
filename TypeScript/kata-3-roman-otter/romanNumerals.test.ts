@@ -16,4 +16,8 @@ describe('Roman Numerals', () => {
   it('converts 5 to V', () => {
     expect(romanNumerals(5)).toEqual('V')
   })
+
+  it('converts 7 to VII', () => {
+    expect(romanNumerals(7)).toEqual('VII')
+  })
 })
