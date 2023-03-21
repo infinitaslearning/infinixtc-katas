@@ -1,6 +1,12 @@
-export const roman = (n: number):string => {
-  if (n === 1) return 'I'
+const arabicToRoman: { key: number; value: string } = {
+  10: 'X',
+  5: 'V',
+  1: 'I',
+}
+
+export const roman = (n: number): string => {
   if (n === 2) return 'II'
-  if (n === 5) return 'V' 
+  return arabicToRoman[n]
+
   return ''
 }
