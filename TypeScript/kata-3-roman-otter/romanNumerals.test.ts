@@ -4,7 +4,12 @@ describe('Roman Numerals', () => {
   it('converts 1 to I', () => {
     expect(romanNumerals(1)).toEqual('I')
   })
+
   it('converts 2 to II', () => {
     expect(romanNumerals(2)).toEqual('II')
+  })
+
+  it('converts 3 to III', () => {
+    expect(romanNumerals(3)).toEqual('III')
   })
 })
