@@ -12,4 +12,8 @@ describe('roman converter', () => {
   it('converts 5 to V', () => {
     expect(roman(5)).toEqual('V')
   })
+
+  it('converts 10 to X', () => {
+    expect(roman(10)).toEqual('X')
+  })
 })
