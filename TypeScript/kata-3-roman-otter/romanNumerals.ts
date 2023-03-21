@@ -1,3 +1,3 @@
-export const romanNumerals = () => {
-  return 'it works!'
+export const romanNumerals = (arabicNumber: number) => {
+  return 'I'
 }
