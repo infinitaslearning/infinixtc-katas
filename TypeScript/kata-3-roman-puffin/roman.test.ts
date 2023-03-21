@@ -17,6 +17,7 @@ describe('roman tests', () => {
     }
     expect(toRoman(input)).toBe(options[input as keyof typeof options])
   })
+
   it.each([15, 55, 105, 505, 1005])('transforms the basic number %i', (input) => {
     const options = {
       15: 'XV',
@@ -24,6 +25,17 @@ describe('roman tests', () => {
       105: 'CV',
       505: 'DV',
       1005: 'MV',
+    }
+    expect(toRoman(input)).toBe(options[input as keyof typeof options])
+  })
+
+  it.each([4, 9, 40, 90, 900])('transforms the basic number %i', (input) => {
+    const options = {
+      4: 'IV',
+      9: 'IX',
+      40: 'XL',
+      90: 'XC',
+      900: 'CM',
     }
     expect(toRoman(input)).toBe(options[input as keyof typeof options])
   })
