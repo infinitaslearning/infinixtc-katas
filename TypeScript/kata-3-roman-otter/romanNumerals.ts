@@ -1,6 +1,8 @@
 export const romanNumerals = (arabicNumber: number) => {
-  if (arabicNumber === 5) {
-    return 'V'
+  let value = ''
+  if (arabicNumber >= 5) {
+    value = 'V'
   }
-  return 'I'.repeat(arabicNumber)
+  value = value + 'I'.repeat(arabicNumber % 5)
+  return value
 }
