@@ -1,4 +1,5 @@
-const arabicToRoman: { key: number; value: string } = {
+
+const arabicToRoman: Record<number,string> = {
   10: 'X',
   5: 'V',
   1: 'I',
