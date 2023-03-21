@@ -21,8 +21,13 @@ describe('Roman Numerals', () => {
     expect(romanNumerals(7)).toEqual('VII')
   })
 
-  it('converts 6 to VI')
-  it('converts 8 to VIII')
+  it('converts 6 to VI', () => {
+    expect(romanNumerals(6)).toEqual('VI')
+  })
+
+  it('converts 8 to VIII', () => {
+    expect(romanNumerals(8)).toEqual('VIII')
+  })
 
   it('converts 4 to IV', () => {
     expect(romanNumerals(4)).toEqual('IV')
