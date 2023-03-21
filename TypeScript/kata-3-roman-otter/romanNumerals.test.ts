@@ -32,4 +32,8 @@ describe('Roman Numerals', () => {
   it('converts 4 to IV', () => {
     expect(romanNumerals(4)).toEqual('IV')
   })
+
+  it('converts 9 to IX', () => {
+    expect(romanNumerals(9)).toEqual('IX')
+  })
 })
