@@ -1,4 +1,20 @@
 import { toRoman } from './roman'
+import https from 'https';
+
+const getRoman = (num: number) => new Promise(resolve => {
+  https.get(`https://romans.justyy.workers.dev/api/romans/?n=${num}`, (res) => {
+    let data = '';
+
+    res.on('data', (chunk) => {
+      data += chunk;
+    });
+
+    res.on('close', () => {
+      const response = JSON.parse(data);
+      resolve(response.result);
+    });
+  })
+})
 
 describe('roman tests', () => {
   it('returns I for 1', () => {
@@ -42,5 +58,10 @@ describe('roman tests', () => {
 
   it('converts 1999 to MCMXCIX', () => {
     expect(toRoman(1999)).toBe('MCMXCIX')
+  })
+
+  it('converts random numbers', async () => {
+    const val = Math.floor(Math.random() * 5000);
+    expect(toRoman(val)).toBe(await getRoman(val));
   })
 })
