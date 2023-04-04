@@ -6,4 +6,8 @@ export class TennisGame {
   }
 
   constructor(player1Name: string, player2Name: string) {}
+
+  point(playerName: string) {
+
+  }
 }
