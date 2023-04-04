@@ -16,6 +16,11 @@ export class TennisGame {
   constructor(player1Name: string, player2Name: string) { }
 
   point(playerName: string) {
-    this._score = new Score(15, 0)
+    if (playerName === 'Teun') {
+      this._score = new Score(15, 0)
+    }
+    else {
+      this._score = new Score(0, 15)
+    }
   }
 }

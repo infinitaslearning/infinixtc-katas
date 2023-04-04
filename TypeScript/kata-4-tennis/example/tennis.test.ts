@@ -18,4 +18,11 @@ describe('Tennis', () => {
     expect(game.score.points).toEqual([0, 15])
 
   })
+
+  it('works for arbitrary player names', () => {
+    const game = new TennisGame('Dali', 'Emma')
+    game.point('Dali')
+    expect(game.score.points).toEqual([15, 0])
+
+  })
 })
