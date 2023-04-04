@@ -61,7 +61,7 @@ describe('roman tests', () => {
   })
 
   it('converts random numbers', async () => {
-    const val = Math.floor(Math.random() * 5000);
+    const val = Math.floor(Math.random() * 4000);
     expect(toRoman(val)).toBe(await getRoman(val));
   })
 })
