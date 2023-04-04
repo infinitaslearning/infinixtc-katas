@@ -1,7 +1,3 @@
-export const example = () => {
-  return 'it works!'
-}
-
 export class TennisGame {
   private _score: string = 'love-all'
 
