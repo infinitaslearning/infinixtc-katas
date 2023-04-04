@@ -30,4 +30,9 @@ describe('Tennis', () => {
     game.point('Dali')
     expect(game.score.points).toEqual([30, 0])
   })
+
+  it('names the score love-all when nobody has scored', () => {
+    const game = new TennisGame('Dali', 'Emma')
+    expect(game.score.toString()).toEqual('love-all')
+  })
 })

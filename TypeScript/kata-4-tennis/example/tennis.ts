@@ -22,9 +22,9 @@ export class TennisGame {
 
   point(playerName: string) {
     if (playerName === this.player1Name) {
-      this._score = new Score(15, 0)
+      this._score = new Score(this._score.points[0] + 15, this._score.points[1])
     } else {
-      this._score = new Score(0, 15)
+      this._score = new Score(this._score.points[0], this._score.points[1] + 15)
     }
   }
 }
