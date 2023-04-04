@@ -1,7 +1,8 @@
-import { example } from "./tennis";
+import { TennisGame } from './tennis'
 
-describe("Example", () => {
-  it("is a passing test just to make sure everything works", () => {
-    expect(example()).toEqual("it works!");
-  });
-});
+describe('Tennis', () => {
+  it('Starts with love-all', () => {
+    const game = new TennisGame('Teun', 'Goderik')
+    expect(game.score).toEqual('love-all')
+  })
+})
