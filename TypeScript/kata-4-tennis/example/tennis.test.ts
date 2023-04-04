@@ -1,14 +1,21 @@
 import { TennisGame } from './tennis'
 
 describe('Tennis', () => {
-  it('starts with love-all', () => {
+  it('starts with 0, 0', () => {
     const game = new TennisGame('Teun', 'Goderik')
-    expect(game.score).toEqual('love-all')
+    expect(game.score.points).toEqual([0, 0])
   })
 
-  it('prints 15-love when first player scores once', () => {
+  it('has a value of 15 0 when first player scores once', () => {
     const game = new TennisGame('Teun', 'Goderik')
     game.point('Teun')
-    expect(game.score).toEqual('15-love')
+    expect(game.score.points).toEqual([15, 0])
+  })
+
+  it('has a value of 0 15 when the seconds palyer scores once', () => {
+    const game = new TennisGame('Teun', 'Goderik')
+    game.point('Goderik')
+    expect(game.score.points).toEqual([0, 15])
+
   })
 })
