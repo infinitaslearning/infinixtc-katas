@@ -16,13 +16,18 @@ describe('Tennis', () => {
     const game = new TennisGame('Teun', 'Goderik')
     game.point('Goderik')
     expect(game.score.points).toEqual([0, 15])
-
   })
 
   it('works for arbitrary player names', () => {
     const game = new TennisGame('Dali', 'Emma')
     game.point('Dali')
     expect(game.score.points).toEqual([15, 0])
+  })
 
+  it('has a value of 30, 0 when player1 scores 2 times', () => {
+    const game = new TennisGame('Dali', 'Emma')
+    game.point('Dali')
+    game.point('Dali')
+    expect(game.score.points).toEqual([30, 0])
   })
 })
