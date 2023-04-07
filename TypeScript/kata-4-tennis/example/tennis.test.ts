@@ -67,7 +67,7 @@ describe('Tennis', () => {
     expect(() => game.point('intruder')).toThrow('Unknown player')
   })
 
-  it.each(['player1', 'player2'])('does not allow scoring more than 4 points (%s)', (name) => {
+  it.each(['player1', 'player2'])('does not allow scoring when game is won (%s)', (name) => {
     const game = new TennisGame('player1', 'player2')
     scorePoints(game, name, 4)
     expect(() => game.point(name)).toThrow('Game finished')
@@ -80,7 +80,7 @@ describe('Tennis', () => {
     expect(game.score).toEqual('deuce')
   })
 
-  it.each(['player1', 'player2'])('shows advantage %s when %s scores in deuce', (name) => {
+  it.each(['player1', 'player2'])('shows advantage %s when they score in deuce', (name) => {
     // given a tennis game in deuce
     const game = new TennisGame('player1', 'player2')
     scorePoints(game, 'player1', 3)
