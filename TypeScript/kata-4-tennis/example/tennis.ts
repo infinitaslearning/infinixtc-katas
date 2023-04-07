@@ -10,6 +10,10 @@ export class TennisGame {
     if (this.player1Score === 4) {
       return `game ${this.player1Name}`
     }
+
+    if (this.player2Score === 4) {
+      return `game ${this.player2Name}`
+    }
     if (this.player1Score === this.player2Score) {
       return `${displayScores[this.player1Score]} all`
     }
