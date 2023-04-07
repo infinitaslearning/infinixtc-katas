@@ -55,4 +55,10 @@ describe('Tennis', () => {
     scorePoints(game, 'player1', 4 )
     expect(game.score).toEqual('game player1')
   })
+
+  it('shows game player2 when player2 scores 4 times', () => {
+    const game = new TennisGame('player1', 'player2')
+    scorePoints(game, 'player2', 4 )
+    expect(game.score).toEqual('game player2')
+  })
 })
