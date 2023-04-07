@@ -7,7 +7,7 @@ export class TennisGame {
   get score(): string {
     const displayScores = ['love', '15', '30', '40']
     if (this.player1Score === this.player2Score) {
-      return 'love all'
+      return `${displayScores[this.player1Score]} all`
     }
 
     return `${displayScores[this.player1Score]}-${displayScores[this.player2Score]}`

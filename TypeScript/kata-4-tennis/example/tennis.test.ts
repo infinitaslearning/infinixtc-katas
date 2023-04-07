@@ -42,4 +42,11 @@ describe('Tennis', () => {
     scorePoints(game, 'Dali', 3)
     expect(game.score).toEqual('40-love')
   })
+
+  it('shows 15 all when player1 and player2 score once', () => {
+    const game = new TennisGame('Dali', 'Emma')
+    game.point('Dali')
+    game.point('Emma')
+    expect(game.score).toEqual('15 all')
+  })
 })
