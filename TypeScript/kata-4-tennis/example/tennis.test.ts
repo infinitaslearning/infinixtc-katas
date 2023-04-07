@@ -72,4 +72,11 @@ describe('Tennis', () => {
     scorePoints(game, name, 4)
     expect(() => game.point(name)).toThrow('Game finished')
   })
+
+  it('shows deuce when both players score 3 times', () => {
+    const game = new TennisGame('player1', 'player2')
+    scorePoints(game, 'player1', 3)
+    scorePoints(game, 'player2', 3)
+    expect(game.score).toEqual('deuce')
+  })
 })
