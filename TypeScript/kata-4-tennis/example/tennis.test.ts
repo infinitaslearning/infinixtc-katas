@@ -52,18 +52,24 @@ describe('Tennis', () => {
 
   it('shows game player1 when player1 scores 4 times', () => {
     const game = new TennisGame('player1', 'player2')
-    scorePoints(game, 'player1', 4 )
+    scorePoints(game, 'player1', 4)
     expect(game.score).toEqual('game player1')
   })
 
   it('shows game player2 when player2 scores 4 times', () => {
     const game = new TennisGame('player1', 'player2')
-    scorePoints(game, 'player2', 4 )
+    scorePoints(game, 'player2', 4)
     expect(game.score).toEqual('game player2')
   })
 
   it('throws an error on unknown player', () => {
     const game = new TennisGame('player1', 'player2')
     expect(() => game.point('intruder')).toThrow('Unknown player')
+  })
+
+  it.each(['player1', 'player2'])('does not allow scoring more than 4 points (%s)', (name) => {
+    const game = new TennisGame('player1', 'player2')
+    scorePoints(game, name, 4)
+    expect(() => game.point(name)).toThrow('Game finished')
   })
 })
