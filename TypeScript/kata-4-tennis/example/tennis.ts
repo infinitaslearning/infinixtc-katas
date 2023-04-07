@@ -1,8 +1,8 @@
 type Mode = 'regular' | 'deuce' | 'game'
 
 export class TennisGame {
-  private player1Name: string
-  private player2Name: string
+  private readonly player1Name: string
+  private readonly player2Name: string
   private player1Score: number = 0
   private player2Score: number = 0
 
@@ -23,23 +23,24 @@ export class TennisGame {
   }
   get score(): string {
     const displayScores = ['love', '15', '30', '40', 'game']
-    const difference = this.player1Score - this.player2Score
+    const sameScore = this.player1Score === this.player2Score
+    const leader = this.player1Score > this.player2Score ? this.player1Name : this.player2Name;
 
     // deuce section
     if (this.mode() === 'deuce') {
-      if (difference === 0) {
+      if (sameScore) {
         return 'deuce'
       }
-      return `advantage ${difference > 0 ? this.player1Name : this.player2Name}`
+      return `advantage ${leader}`
     }
 
     // game section
     if (this.mode() === 'game') {
-      return `game ${difference > 0 ? this.player1Name : this.player2Name}`
+      return `game ${leader}`
     }
 
     // regular section
-    if (difference === 0) {
+    if (sameScore) {
       return `${displayScores[this.player1Score]} all`
     }
     return `${displayScores[this.player1Score]}-${displayScores[this.player2Score]}`
