@@ -61,4 +61,9 @@ describe('Tennis', () => {
     scorePoints(game, 'player2', 4 )
     expect(game.score).toEqual('game player2')
   })
+
+  it('throws an error on unknown player', () => {
+    const game = new TennisGame('player1', 'player2')
+    expect(() => game.point('intruder')).toThrow('Unknown player')
+  })
 })

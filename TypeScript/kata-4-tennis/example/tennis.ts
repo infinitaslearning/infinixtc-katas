@@ -29,8 +29,10 @@ export class TennisGame {
   point(playerName: string) {
     if (playerName === this.player1Name) {
       this.player1Score += 1
-    } else {
+    } else if (playerName === this.player2Name) {
       this.player2Score += 1
+    } else {
+      throw new Error('Unknown player')
     }
   }
 }
