@@ -1,38 +1,47 @@
+type Mode = 'regular' | 'deuce' | 'game'
+
 export class TennisGame {
   private player1Name: string
   private player2Name: string
   private player1Score: number = 0
   private player2Score: number = 0
 
+  private mode(): Mode {
+    if (this.player1Score >= 3 && this.player2Score >= 3) {
+      if (Math.abs(this.player1Score - this.player2Score) < 2) {
+        return 'deuce'
+      } else {
+        return 'game'
+      }
+    }
+
+    if (this.player1Score === 4 || this.player2Score === 4) {
+      return 'game'
+    }
+
+    return 'regular'
+  }
   get score(): string {
     const displayScores = ['love', '15', '30', '40', 'game']
+    const difference = this.player1Score - this.player2Score
 
     // deuce section
-    if (this.player1Score === 4 && this.player2Score === 3) {
-      return `advantage ${this.player1Name}`
-    }
-
-    if (this.player2Score === 4 && this.player1Score === 3) {
-      return `advantage ${this.player2Name}`
-    }
-
-    if (this.player1Score === this.player2Score) {
-      if (this.player1Score >= 3) {
+    if (this.mode() === 'deuce') {
+      if (difference === 0) {
         return 'deuce'
       }
-      return `${displayScores[this.player1Score]} all`
+      return `advantage ${difference > 0 ? this.player1Name : this.player2Name}`
     }
 
     // game section
-    if (this.player1Score === 4) {
-      return `game ${this.player1Name}`
-    }
-
-    if (this.player2Score === 4) {
-      return `game ${this.player2Name}`
+    if (this.mode() === 'game') {
+      return `game ${difference > 0 ? this.player1Name : this.player2Name}`
     }
 
     // regular section
+    if (difference === 0) {
+      return `${displayScores[this.player1Score]} all`
+    }
     return `${displayScores[this.player1Score]}-${displayScores[this.player2Score]}`
   }
 
@@ -42,15 +51,12 @@ export class TennisGame {
   }
 
   point(playerName: string) {
+    if (this.mode() === 'game') {
+      throw new Error('Game finished')
+    }
     if (playerName === this.player1Name) {
-      if (this.player1Score === 4) {
-        throw new Error('Game finished')
-      }
       this.player1Score += 1
     } else if (playerName === this.player2Name) {
-      if (this.player2Score === 4) {
-        throw new Error('Game finished')
-      }
       this.player2Score += 1
     } else {
       throw new Error('Unknown player')

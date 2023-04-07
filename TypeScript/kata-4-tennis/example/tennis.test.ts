@@ -101,4 +101,37 @@ describe('Tennis', () => {
     // then we're back in deuce
     expect(game.score).toEqual('deuce')
   })
+
+  it('shows deuce if player2 scores when player1 has advantage', () => {
+    // given a tennis game with advantage player1
+    const game = new TennisGame('player1', 'player2')
+    scorePoints(game, 'player2', 3)
+    scorePoints(game, 'player1', 4)
+    // when player2 scores
+    game.point('player2')
+    // then we're back in deuce
+    expect(game.score).toEqual('deuce')
+  })
+
+  it('shows game player1 when player1 scores after advantage', () => {
+    // given a tennis game with advantage player1
+    const game = new TennisGame('player1', 'player2')
+    scorePoints(game, 'player2', 3)
+    scorePoints(game, 'player1', 4)
+    // when player1 scores
+    game.point('player1')
+    // then player1 wins
+    expect(game.score).toEqual('game player1')
+  })
+
+  it('shows game player2 when player2 scores after advantage', () => {
+    // given a tennis game with advantage player2
+    const game = new TennisGame('player1', 'player2')
+    scorePoints(game, 'player1', 3)
+    scorePoints(game, 'player2', 4)
+    // when player2 scores
+    game.point('player2')
+    // then player2 wins
+    expect(game.score).toEqual('game player2')
+  })
 })
