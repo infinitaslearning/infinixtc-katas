@@ -7,7 +7,7 @@ export class TennisGame {
   get score(): string {
     const displayScores = ['love', '15', '30', '40', 'game']
 
-    // enter deuce
+    // deuce section
     if (this.player1Score === 4 && this.player2Score === 3) {
       return `advantage ${this.player1Name}`
     }
@@ -16,6 +16,14 @@ export class TennisGame {
       return `advantage ${this.player2Name}`
     }
 
+    if (this.player1Score === this.player2Score) {
+      if (this.player1Score >= 3) {
+        return 'deuce'
+      }
+      return `${displayScores[this.player1Score]} all`
+    }
+
+    // game section
     if (this.player1Score === 4) {
       return `game ${this.player1Name}`
     }
@@ -23,13 +31,8 @@ export class TennisGame {
     if (this.player2Score === 4) {
       return `game ${this.player2Name}`
     }
-    if (this.player1Score === this.player2Score) {
-      if (this.player1Score === 3) {
-        return 'deuce'
-      }
-      return `${displayScores[this.player1Score]} all`
-    }
 
+    // regular section
     return `${displayScores[this.player1Score]}-${displayScores[this.player2Score]}`
   }
 

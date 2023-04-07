@@ -90,4 +90,15 @@ describe('Tennis', () => {
     // then named player gets advantage
     expect(game.score).toEqual(`advantage ${name}`)
   })
+
+  it('shows deuce if player1 scores when player2 has advantage', () => {
+    // given a tennis game with advantage player2
+    const game = new TennisGame('player1', 'player2')
+    scorePoints(game, 'player1', 3)
+    scorePoints(game, 'player2', 4)
+    // when player1 scores
+    game.point('player1')
+    // then we're back in deuce
+    expect(game.score).toEqual('deuce')
+  })
 })
