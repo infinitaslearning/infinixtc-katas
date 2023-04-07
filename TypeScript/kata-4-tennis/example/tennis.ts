@@ -7,6 +7,11 @@ export class TennisGame {
   get score(): string {
     const displayScores = ['love', '15', '30', '40', 'game']
 
+    // enter deuce
+    if (this.player1Score === 4 && this.player2Score === 3) {
+      return `advantage ${this.player1Name}`
+    }
+
     if (this.player1Score === 4) {
       return `game ${this.player1Name}`
     }
