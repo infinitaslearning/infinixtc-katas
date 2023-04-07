@@ -134,4 +134,8 @@ describe('Tennis', () => {
     // then player2 wins
     expect(game.score).toEqual('game player2')
   })
+
+  it('requires players with distinct names', () => {
+    expect(() => new TennisGame('same', 'same')).toThrow('Players must have distinct names')
+  })
 })

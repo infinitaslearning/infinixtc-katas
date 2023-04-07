@@ -82,6 +82,9 @@ export class TennisGame {
   private readonly players: string[]
 
   constructor(player1Name: string, player2Name: string) {
+    if (player1Name === player2Name) {
+      throw new Error('Players must have distinct names')
+    }
     this.game = new RegularGame(player1Name, player2Name)
     this.players = [player1Name, player2Name]
   }
