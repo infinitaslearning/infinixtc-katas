@@ -80,14 +80,14 @@ describe('Tennis', () => {
     expect(game.score).toEqual('deuce')
   })
 
-  it('shows advantage player1 when both players1 scores in deuce', () => {
+  it.each(['player1', 'player2'])('shows advantage %s when %s scores in deuce', (name) => {
     // given a tennis game in deuce
     const game = new TennisGame('player1', 'player2')
     scorePoints(game, 'player1', 3)
     scorePoints(game, 'player2', 3)
-    // when player1 scores
-    game.point('player1')
-    // then player1 gets advantage
-    expect(game.score).toEqual('advantage player1')
+    // when named player scores
+    game.point(name)
+    // then named player gets advantage
+    expect(game.score).toEqual(`advantage ${name}`)
   })
 })

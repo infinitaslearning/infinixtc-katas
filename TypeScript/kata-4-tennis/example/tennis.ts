@@ -12,6 +12,10 @@ export class TennisGame {
       return `advantage ${this.player1Name}`
     }
 
+    if (this.player2Score === 4 && this.player1Score === 3) {
+      return `advantage ${this.player2Name}`
+    }
+
     if (this.player1Score === 4) {
       return `game ${this.player1Name}`
     }
