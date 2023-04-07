@@ -5,7 +5,11 @@ export class TennisGame {
   private player2Score: number = 0
 
   get score(): string {
-    const displayScores = ['love', '15', '30', '40']
+    const displayScores = ['love', '15', '30', '40', 'game']
+
+    if (this.player1Score === 4) {
+      return `game ${this.player1Name}`
+    }
     if (this.player1Score === this.player2Score) {
       return `${displayScores[this.player1Score]} all`
     }
