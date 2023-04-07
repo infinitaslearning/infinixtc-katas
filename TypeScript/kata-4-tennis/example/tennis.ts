@@ -1,4 +1,3 @@
-
 export class TennisGame {
   private player1Name: string
   private player2Name: string
@@ -6,12 +5,12 @@ export class TennisGame {
   private player2Score: number = 0
 
   get score(): string {
-    let player1output = 'love';
-    let player2output = 'love';
-    if (this.player1Score !== 0) player1output = String(this.player1Score)
-    if (this.player2Score !== 0) player2output = String(this.player2Score)
-    if (this.player1Score + this.player2Score > 0) return `${player1output}-${player2output}`
-    return 'love all'
+    const displayScores = ['love', '15', '30', '40']
+    if (this.player1Score === this.player2Score) {
+      return 'love all'
+    }
+
+    return `${displayScores[this.player1Score]}-${displayScores[this.player2Score]}`
   }
 
   constructor(player1Name: string, player2Name: string) {
@@ -21,10 +20,9 @@ export class TennisGame {
 
   point(playerName: string) {
     if (playerName === this.player1Name) {
-      this.player1Score += 15
-    }
-    else {
-      this.player2Score = 15
+      this.player1Score += 1
+    } else {
+      this.player2Score += 1
     }
   }
 }
