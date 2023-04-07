@@ -6,6 +6,11 @@ export class TennisGame {
   private player1Score: number = 0
   private player2Score: number = 0
 
+  constructor(player1Name: string, player2Name: string) {
+    this.player1Name = player1Name
+    this.player2Name = player2Name
+  }
+
   private mode(): Mode {
     if (this.player1Score >= 3 && this.player2Score >= 3) {
       if (Math.abs(this.player1Score - this.player2Score) < 2) {
@@ -21,10 +26,11 @@ export class TennisGame {
 
     return 'regular'
   }
+
   get score(): string {
     const displayScores = ['love', '15', '30', '40', 'game']
     const sameScore = this.player1Score === this.player2Score
-    const leader = this.player1Score > this.player2Score ? this.player1Name : this.player2Name;
+    const leader = this.player1Score > this.player2Score ? this.player1Name : this.player2Name
 
     // deuce section
     if (this.mode() === 'deuce') {
@@ -44,11 +50,6 @@ export class TennisGame {
       return `${displayScores[this.player1Score]} all`
     }
     return `${displayScores[this.player1Score]}-${displayScores[this.player2Score]}`
-  }
-
-  constructor(player1Name: string, player2Name: string) {
-    this.player1Name = player1Name
-    this.player2Name = player2Name
   }
 
   point(playerName: string) {
