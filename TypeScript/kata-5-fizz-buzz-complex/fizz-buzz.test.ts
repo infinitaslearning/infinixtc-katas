@@ -4,10 +4,6 @@ const checkNthElement = (n: number, value: string) => {
   expect(fizzBuzz()[n - 1]).toEqual(value)
 }
 
-const checkNthElementContains = (n: number, value: string) => {
-  expect(fizzBuzz()[n - 1]).toContain(value)
-}
-
 describe('Fizz Buzz', () => {
   it('returns 100 elements', () => {
     expect(fizzBuzz().length).toEqual(100)
@@ -29,7 +25,7 @@ describe('Fizz Buzz', () => {
     checkNthElement(n, 'FizzBuzz')
   })
 
-  it.each([5, 15, 45, 50, 95])('contains "Buzz" if number contains 5 (%i)', (n) => {
-    checkNthElementContains(n, 'Buzz')
+  it.each([5, 35, 50, 53, 55, 95])('returns "Buzz" if number contains 5 (%i)', (n) => {
+    checkNthElement(n, 'Buzz')
   })
 })

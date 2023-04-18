@@ -3,7 +3,7 @@ const isFizz = (n: number): boolean => {
 }
 
 const isBuzz = (n: number): boolean => {
-  return n % 5 === 0
+  return n % 5 === 0 || String(n).includes('5')
 }
 
 export const fizzBuzz = (): string[] => {
