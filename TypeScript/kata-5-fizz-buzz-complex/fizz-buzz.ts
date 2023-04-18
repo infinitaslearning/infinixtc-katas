@@ -23,10 +23,17 @@ export const fizzBuzz = (): string[] => {
 
     if (output !== '') {
       array.push(output)
-    }
-    else {
+    } else {
       array.push(String(i))
     }
   }
   return array
+}
+
+export const _convertNumber = (dictionary: [number, string], n: number): string => {
+  const [value, translation] = dictionary
+  if (n === value) {
+    return translation
+  }
+  return String(n)
 }

@@ -1,4 +1,4 @@
-import { fizzBuzz } from './fizz-buzz'
+import { fizzBuzz, _convertNumber } from './fizz-buzz'
 
 const checkNthElement = (n: number, value: string) => {
   expect(fizzBuzz()[n - 1]).toEqual(value)
@@ -31,5 +31,15 @@ describe('Fizz Buzz', () => {
 
   it.each([3, 13, 31, 33, 93])('returns "Fizz" if number contains 3 (%i)', (n) => {
     checkNthElement(n, 'Fizz')
+  })
+})
+
+describe('Number Converter', () => {
+  it('returns string representation of number when no match', () => {
+    expect(_convertNumber([2, 'Two'], 5)).toEqual('5')
+  })
+
+  it('replaces number with word on exact match', () => {
+    expect(_convertNumber([2, 'Two'], 2)).toEqual('Two')
   })
 })
