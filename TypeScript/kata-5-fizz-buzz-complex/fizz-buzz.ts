@@ -1,9 +1,13 @@
+const isDivisibleOrContains = (check: number, n: number): boolean => {
+  return n % check === 0 || String(n).includes(String(check))
+}
+
 const isFizz = (n: number): boolean => {
-  return n % 3 === 0
+  return isDivisibleOrContains(3, n)
 }
 
 const isBuzz = (n: number): boolean => {
-  return n % 5 === 0 || String(n).includes('5')
+  return isDivisibleOrContains(5, n)
 }
 
 export const fizzBuzz = (): string[] => {

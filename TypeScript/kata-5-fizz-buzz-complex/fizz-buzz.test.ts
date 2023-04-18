@@ -25,7 +25,11 @@ describe('Fizz Buzz', () => {
     checkNthElement(n, 'FizzBuzz')
   })
 
-  it.each([5, 35, 50, 53, 55, 95])('returns "Buzz" if number contains 5 (%i)', (n) => {
+  it.each([5, 25, 50, 52, 55, 95])('returns "Buzz" if number contains 5 (%i)', (n) => {
     checkNthElement(n, 'Buzz')
+  })
+
+  it.each([3, 13, 31, 33, 93])('returns "Fizz" if number contains 3 (%i)', (n) => {
+    checkNthElement(n, 'Fizz')
   })
 })
