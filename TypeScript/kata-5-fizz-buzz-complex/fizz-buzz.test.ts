@@ -20,4 +20,8 @@ describe('Fizz Buzz', () => {
   it.each([5, 10, 20, 40, 95])('return "Buzz" if number is divisible by 5 (%i)', (n) => {
     checkNthElement(n, 'Buzz')
   })
+
+  it.each([15, 45])('return "FizzBuzz" if number is divisible by 3 and 5 (%i)', (n) => {
+    checkNthElement(n, 'FizzBuzz')
+  })
 })

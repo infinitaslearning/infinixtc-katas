@@ -9,11 +9,18 @@ const isBuzz = (n: number): boolean => {
 export const fizzBuzz = (): string[] => {
   const array: string[] = []
   for (let i = 1; i <= 100; i++) {
+    let output: string = ''
     if (isFizz(i)) {
-      array.push('Fizz')
-    } else if (isBuzz(i)) {
-      array.push('Buzz')
-    } else {
+      output += 'Fizz'
+    }
+    if (isBuzz(i)) {
+      output += 'Buzz'
+    }
+
+    if (output !== '') {
+      array.push(output)
+    }
+    else {
       array.push(String(i))
     }
   }
