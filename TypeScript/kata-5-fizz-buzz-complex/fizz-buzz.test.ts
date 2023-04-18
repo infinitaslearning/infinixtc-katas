@@ -36,10 +36,20 @@ describe('Fizz Buzz', () => {
 
 describe('Number Converter', () => {
   it('returns string representation of number when no match', () => {
-    expect(_convertNumber([2, 'Two'], 5)).toEqual('5')
+    expect(_convertNumber([[2, 'Two']], 5)).toEqual('5')
   })
 
   it('replaces number with word on exact match', () => {
-    expect(_convertNumber([2, 'Two'], 2)).toEqual('Two')
+    expect(_convertNumber([[2, 'Two']], 2)).toEqual('Two')
+  })
+
+  describe('multiple conversion pairs', () => {
+    it('returns string representation of number when no match', () => {
+      expect(_convertNumber([[2, 'Two'],[7, 'Seven']], 3)).toEqual('3')
+    })
+
+    it('replaces number with word on exact match', () => {
+      expect(_convertNumber([[2, 'Two'],[7, 'Seven']], 7)).toEqual('Seven')
+    })
   })
 })

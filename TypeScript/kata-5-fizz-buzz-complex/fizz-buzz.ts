@@ -30,10 +30,17 @@ export const fizzBuzz = (): string[] => {
   return array
 }
 
-export const _convertNumber = (dictionary: [number, string], n: number): string => {
-  const [value, translation] = dictionary
-  if (n === value) {
-    return translation
+export const _convertNumber = (dictionary: [number, string][], n: number): string => {
+  let output: string = ''
+
+  dictionary.forEach(([value, translation]) => {
+    if (n === value) {
+      output += translation
+    }
+  })
+
+  if (output === '') {
+    return String(n)
   }
-  return String(n)
+  return output
 }
