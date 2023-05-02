@@ -42,4 +42,17 @@ describe('Berlin Clock', () => {
 
     expect(singleHoursRow).toBe(expected)
   })
+
+  it.each`
+    digitalTime   | expected
+    ${'00:00:00'} | ${'OOOO'}
+    ${'23:59:59'} | ${'RRRR'}
+    ${'02:04:00'} | ${'OOOO'}
+    ${'08:23:00'} | ${'ROOO'}
+  `('renders $expected for five hours row at $digitalTime', ({ digitalTime, expected }) => {
+    const berlinTime = toBerlinTime(digitalTime)
+    const fiveHoursRow = berlinTime.substring(1, 5)
+
+    expect(fiveHoursRow).toBe(expected)
+  })
 })
