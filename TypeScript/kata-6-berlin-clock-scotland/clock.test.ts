@@ -55,4 +55,15 @@ describe('Berlin Clock', () => {
 
     expect(fiveHoursRow).toBe(expected)
   })
+
+  it.each`
+    digitalTime   | expected
+    ${'00:00:00'} | ${'Y'}
+    ${'23:59:59'} | ${'O'}
+  `('renders $expected for seconds lamp at $digitalTime', ({ digitalTime, expected }) => {
+    const berlinTime = toBerlinTime(digitalTime)
+    const secondsLamp = berlinTime[0]
+
+    expect(secondsLamp).toBe(expected)
+  })
 })

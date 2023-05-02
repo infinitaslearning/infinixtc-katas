@@ -1,11 +1,15 @@
 type TimeConversion = (time: string) => string
 
 export const toBerlinTime: TimeConversion = (time: string): string => {
-  const hours = Number(time.substring(0, 2))
-  const minutes = Number(time.substring(3, 5))
-  return [fiveHoursRow(hours), singleHoursRow(hours), fiveMinutesRow(minutes), singleMinutesRow(minutes)]
+  const [hours, minutes, seconds] = time.split(':').map(Number)
+  return [
+    secondsLamp(seconds),
+    fiveHoursRow(hours),
+    singleHoursRow(hours),
+    fiveMinutesRow(minutes),
+    singleMinutesRow(minutes),
+  ]
     .join('')
-    .padStart(24, 'O')
 }
 
 function singleMinutesRow(minutes: number): string {
@@ -28,4 +32,8 @@ function fiveHoursRow(hours: number): string {
   const fullRow = 'RRRR'
   const fiveHours = Math.floor(hours / 5)
   return fullRow.substring(0, fiveHours).padEnd(4, 'O')
+}
+
+function secondsLamp(seconds: number): string {
+  return seconds % 2 === 0 ? 'Y' : 'O'
 }
