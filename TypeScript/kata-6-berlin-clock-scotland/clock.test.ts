@@ -28,4 +28,18 @@ describe('Berlin Clock', () => {
 
     expect(fiveMinutesRow).toBe(expected)
   })
+
+  it.each`
+    digitalTime   | expected
+    ${'00:00:00'} | ${'OOOO'}
+    ${'23:59:59'} | ${'RRRO'}
+    ${'02:04:00'} | ${'RROO'}
+    ${'08:23:00'} | ${'RRRO'}
+    ${'14:35:00'} | ${'RRRR'}
+  `('renders $expected for single hours row at $digitalTime', ({ digitalTime, expected }) => {
+    const berlinTime = toBerlinTime(digitalTime)
+    const singleHoursRow = berlinTime.substring(5, 9)
+
+    expect(singleHoursRow).toBe(expected)
+  })
 })
