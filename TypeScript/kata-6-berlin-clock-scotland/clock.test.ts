@@ -66,4 +66,17 @@ describe('Berlin Clock', () => {
 
     expect(secondsLamp).toBe(expected)
   })
+
+  it.each`
+    digitalTime   | expected
+    ${'00:00:00'} | ${'YOOOOOOOOOOOOOOOOOOOOOOO'}
+    ${'23:59:59'} | ${'ORRRRRRROYYRYYRYYRYYYYYY'}
+    ${'16:50:06'} | ${'YRRROROOOYYRYYRYYRYOOOOO'}
+    ${'11:37:01'} | ${'ORROOROOOYYRYYRYOOOOYYOO'}
+  `('renders Berlin time as $expected at $digitalTime', ({ digitalTime, expected }) => {
+    const berlinTime = toBerlinTime(digitalTime)
+
+    expect(berlinTime).toBe(expected)
+  })
+
 })
