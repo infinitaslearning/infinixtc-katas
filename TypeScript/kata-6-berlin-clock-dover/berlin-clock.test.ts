@@ -23,5 +23,21 @@ describe('ToBerlinTime tests', () => {
 
       expect(row).toEqual('OOOOOOOOOOO');
     })
+
+    it('returns YYRYYRYYRYY when time is 23:59:59', () => {
+      const time = '23:59:59';
+
+      const row = toFiveMinutesRow(time);
+
+      expect(row).toEqual('YYRYYRYYRYY');
+    })
+
+    it('returns YYRYYRYOOOO when time is 12:35:00', () => {
+      const time = '12:35:00';
+
+      const row = toFiveMinutesRow(time);
+
+      expect(row).toEqual('YYRYYRYOOOO');
+    })
   })
 });
