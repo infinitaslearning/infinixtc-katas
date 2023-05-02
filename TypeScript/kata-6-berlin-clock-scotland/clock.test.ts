@@ -78,5 +78,4 @@ describe('Berlin Clock', () => {
 
     expect(berlinTime).toBe(expected)
   })
-
 })
