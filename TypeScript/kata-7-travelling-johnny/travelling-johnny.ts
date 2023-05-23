@@ -14,7 +14,7 @@ const isRelevantTrip = ([, endDate]: Trip, checkDate: Date): boolean => daysBetw
 
 const schengenTime = (trips: Trip[], checkDate: Date): number => {
   const relevantTrips = trips.filter((trip) => isRelevantTrip(trip, checkDate))
-  return 90 - relevantTrips.reduce((acc, trip) => acc + calculateDaysInTrip(trip), 0)
+  return relevantTrips.reduce((acc, trip) => acc - calculateDaysInTrip(trip), 90)
 }
 
 export default schengenTime
