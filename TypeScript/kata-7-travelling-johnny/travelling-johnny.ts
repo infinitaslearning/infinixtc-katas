@@ -1,4 +1,4 @@
-type Trip = [Date, Date]
+export type Trip = [Date, Date]
 
 const daysBetween = (startDate: Date, endDate: Date): number => {
   const oneDay = 1000 * 60 * 60 * 24
@@ -14,11 +14,7 @@ const isRelevantTrip = ([, endDate]: Trip, checkDate: Date): boolean => daysBetw
 
 const schengenTime = (trips: Trip[], checkDate: Date): number => {
   const relevantTrips = trips.filter((trip) => isRelevantTrip(trip, checkDate))
-
-  if (relevantTrips.length == 1) {
-    return 90 - calculateDaysInTrip(relevantTrips[0])
-  }
-  return 90
+  return 90 - relevantTrips.reduce((acc, trip) => acc + calculateDaysInTrip(trip), 0)
 }
 
 export default schengenTime
