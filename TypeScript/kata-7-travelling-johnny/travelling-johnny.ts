@@ -10,7 +10,7 @@ const tripsToRelevantDays = (trips: Trip[], checkDate: Date) => {
   trips.forEach(([startDate, endDate]: Trip) => {
     let pointer: Date = new Date(startDate)
     while (isDateLessOrEqual(pointer,endDate)) {
-      if (isDateLessOrEqual(startWindow, pointer)) result.push(pointer)
+      if (isDateLessOrEqual(startWindow, pointer) && !result.some(d => isDateEqual(d, pointer))) result.push(pointer)
       pointer = addDays(pointer, 1)
     }
   })
