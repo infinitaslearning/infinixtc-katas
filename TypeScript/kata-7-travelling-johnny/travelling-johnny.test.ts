@@ -7,15 +7,23 @@ describe('Travelling Johnny', () => {
     expect(schengenTime([], new Date())).toBe(90)
   })
 
-  it('returns 89 when a day trip is booked', () => {
-    expect(schengenTime([trip('2023-05-01', '2023-05-01')], new Date('2023-05-10'))).toBe(89)
+  it.each`
+  trips                                 | checkDate
+  ${[trip('2023-05-01', '2023-05-01')]} | ${new Date('2023-05-10')}
+  ${[trip('2022-11-12', '2022-11-12')]} | ${new Date('2023-05-10')}
+  `('returns 89 when a day trip is booked', ({trips, checkDate}) => {
+    expect(schengenTime(trips, checkDate)).toBe(89)
   })
 
-  it('returns 90 when a day trip is booked but outside of the 180 window', () => {
-    expect(schengenTime([trip('2022-05-01', '2022-05-01')], new Date('2023-05-10'))).toBe(90)
+  it.each`
+  trips                                 | checkDate
+  ${[trip('2022-05-01', '2022-05-01')]} | ${new Date('2023-05-10')}
+  ${[trip('2022-11-11', '2022-11-11')]} | ${new Date('2023-05-10')}
+  `('returns 90 when a day trip is booked but outside of the 180 window', ({trips, checkDate}) => {
+    expect(schengenTime(trips, checkDate)).toBe(90)
   })
 
-  it('returns 80 if Johnny had 2 5 day trips in the last 180 days', () => {
+  it('returns 80 if Johnny had 2 recent 5 day trips in the last 180 days', () => {
     const trip1 = trip('2023-04-06', '2023-04-10')
     const trip2 = trip('2023-05-01', '2023-05-05')
 
