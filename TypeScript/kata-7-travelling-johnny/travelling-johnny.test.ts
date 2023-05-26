@@ -33,4 +33,15 @@ describe('Travelling Johnny', () => {
 
     expect(daysRemaining).toBe(80)
   })
+
+  it('returns 81 if Johnny had 2 recent 5 day trips where the second trip starts the same day where the first trip ends', () => {
+    const trip1 = trip('2023-04-06', '2023-04-10')
+    const trip2 = trip('2023-04-10', '2023-04-14')
+
+    const checkDate = new Date('2023-05-10')
+
+    const daysRemaining = schengenTime([trip1, trip2], checkDate)
+
+    expect(daysRemaining).toBe(81)
+  })
 })
