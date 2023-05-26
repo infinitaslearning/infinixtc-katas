@@ -1,20 +1,25 @@
+import { isDateLessOrEqual, addDays, isDateEqual} from './dateFunctions'
+
 export type Trip = [Date, Date]
 
-const daysBetween = (startDate: Date, endDate: Date): number => {
-  const oneDay = 1000 * 60 * 60 * 24
-  const diff = endDate.getTime() - startDate.getTime()
-  return Math.round(diff / oneDay)
-}
 
-const calculateDaysInTrip = ([startDate, endDate]: Trip): number => {
-  return daysBetween(startDate, endDate) + 1
-}
+const tripsToRelevantDays = (trips: Trip[], checkDate: Date) => {
+  let result: Date[] = []
+  let startWindow: Date = addDays(checkDate, - (180-1))
 
-const isRelevantTrip = ([, endDate]: Trip, checkDate: Date): boolean => daysBetween(endDate, checkDate) < 180
+  trips.forEach(([startDate, endDate]: Trip) => {
+    let pointer: Date = new Date(startDate)
+    while (isDateLessOrEqual(pointer,endDate)) {
+      if (isDateLessOrEqual(startWindow, pointer)) result.push(pointer)
+      pointer = addDays(pointer, 1)
+    }
+  })
+  return result;
+}
 
 const schengenTime = (trips: Trip[], checkDate: Date): number => {
-  const relevantTrips = trips.filter((trip) => isRelevantTrip(trip, checkDate))
-  return relevantTrips.reduce((acc, trip) => acc - calculateDaysInTrip(trip), 90)
+  const relevantDaysSpendInSchengen: Date[] = tripsToRelevantDays(trips, checkDate)
+  return 90 - relevantDaysSpendInSchengen.length
 }
 
 export default schengenTime
