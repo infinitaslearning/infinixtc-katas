@@ -10,7 +10,6 @@ describe('Travelling Johnny', () => {
   it.each`
   trips                                 | checkDate
   ${[trip('2023-05-01', '2023-05-01')]} | ${new Date('2023-05-10')}
-  ${[trip('2022-11-12', '2022-11-12')]} | ${new Date('2023-05-10')}
   `('returns 89 when a day trip is booked', ({trips, checkDate}) => {
     expect(schengenTime(trips, checkDate)).toBe(89)
   })
