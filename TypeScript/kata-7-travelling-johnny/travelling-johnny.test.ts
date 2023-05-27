@@ -44,4 +44,14 @@ describe('Travelling Johnny', () => {
 
     expect(daysRemaining).toBe(81)
   })
+
+  it('returns -5 if Johnny recently spent 95 days in Schengen', () => {
+    const trip1 = trip('2023-01-01', '2023-04-23')
+
+    const checkDate = new Date('2023-05-10')
+
+    const daysRemaining = schengenTime([trip1], checkDate)
+
+    expect(daysRemaining).toBe(-5)
+  })
 })
