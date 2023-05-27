@@ -54,4 +54,14 @@ describe('Travelling Johnny', () => {
 
     expect(daysRemaining).toBe(-5)
   })
+
+  it('returns 90 after a period of 90 days outside the schengen zone', () => {
+    const trip1 = trip('2022-12-01', '2022-12-31')
+
+    const checkDate = new Date('2023-04-01')
+
+    const daysRemaining = schengenTime([trip1], checkDate)
+
+    expect(daysRemaining).toBe(90)
+  })
 })
