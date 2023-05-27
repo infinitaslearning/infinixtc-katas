@@ -18,8 +18,10 @@ const tripsToRelevantDays = (trips: Trip[], checkDate: Date) => {
 }
 
 const schengenTime = (trips: Trip[], checkDate: Date): number => {
-  const relevantDaysSpendInSchengen: Date[] = tripsToRelevantDays(trips, checkDate)
-  return 90 - relevantDaysSpendInSchengen.length
+  const daysSpendInSchengenArr: Date[] = tripsToRelevantDays(trips, checkDate)
+  const daysInSchengen = daysSpendInSchengenArr.length
+
+  return 90 - daysInSchengen
 }
 
 export default schengenTime
