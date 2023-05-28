@@ -31,6 +31,7 @@ const schengenTime = (trips: Trip[], checkDate: Date): number => {
 
   while (relevantDates.length <= MAX_DAYS_IN_SCHENGEN) {
     counter += 1
+
     datePointer = addDays(datePointer, 1)
     addDateToArr(relevantDates, datePointer)
     relevantDates = getDatesInWindow(relevantDates, datePointer)
