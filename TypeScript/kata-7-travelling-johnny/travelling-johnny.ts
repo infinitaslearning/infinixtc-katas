@@ -5,9 +5,9 @@ export type Trip = [Date, Date]
 const SCHENGEN_WINDOW = 180
 const MAX_DAYS_IN_SCHENGEN = 90
 const addDateToArr = (relevantDays: Date[], dayToAdd: Date) => { if (!relevantDays.some(d => isDateEqual(d, dayToAdd))) relevantDays.push(dayToAdd)}
-const filterDatesInWindow = (dates: Date[], referenceDate: Date) => dates.filter(d => isDateLessOrEqual(addDays(referenceDate, -(SCHENGEN_WINDOW - 1)), d))
+const getDatesInWindow = (dates: Date[], referenceDate: Date) => dates.filter(d => isDateLessOrEqual(addDays(referenceDate, -(SCHENGEN_WINDOW - 1)), d))
 
-const getDatesFromTrip = (trips: Trip[]) => {
+const getDatesFromTrips = (trips: Trip[]) => {
   let result: Date[] = []
   trips.forEach(([startDateTrip, endDateTrip]: Trip) => {
     let datePointer: Date = new Date(startDateTrip)
@@ -20,8 +20,8 @@ const getDatesFromTrip = (trips: Trip[]) => {
 }
 
 const schengenTime = (trips: Trip[], checkDate: Date): number => {
-  let tripDates = getDatesFromTrip(trips)
-  let relevantDates: Date[] = filterDatesInWindow(tripDates, checkDate)
+  let tripDates: Date[] = getDatesFromTrips(trips)
+  let relevantDates: Date[] = getDatesInWindow(tripDates, checkDate)
 
   if (relevantDates.length > MAX_DAYS_IN_SCHENGEN) return MAX_DAYS_IN_SCHENGEN - relevantDates.length
 
@@ -33,7 +33,7 @@ const schengenTime = (trips: Trip[], checkDate: Date): number => {
     counter += 1
     datePointer = addDays(datePointer, 1)
     addDateToArr(relevantDates, datePointer)
-    relevantDates = filterDatesInWindow(relevantDates, datePointer)
+    relevantDates = getDatesInWindow(relevantDates, datePointer)
   }
 
   return counter
