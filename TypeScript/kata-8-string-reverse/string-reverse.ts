@@ -52,4 +52,9 @@ const seventh = (input: string): string => {
   return reverseString
 }
 
-export const implementations: ((input: string) => string)[] = [first, second, third, fourth, fifth, sixth, seventh]
+const eighth = (input: string) => {
+  const [...rest] = input
+  return rest.reverse().join('')
+}
+
+export const implementations: ((input: string) => string)[] = [first, second, third, fourth, fifth, sixth, seventh, eighth]
