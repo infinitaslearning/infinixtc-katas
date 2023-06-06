@@ -9,4 +9,10 @@ describe('String reversing', () => {
 
     expect(result).toBe(reversed)
   })
+
+  it.each(implementations)('reverses empty string', (implementation) => {
+    const result = implementation('')
+
+    expect(result).toBe('')
+  })
 })
