@@ -103,3 +103,11 @@ export const implementations: ((input: string) => string)[] = [
   ninth,
   tenth,
 ]
+
+const eleventh = (input: string, index: number = 0): string => {
+  const last = implementations.length % 2 ? implementations.length - 2 : implementations.length - 3
+  if (index === last) return input
+  return eleventh(implementations[index](input), index + 1)
+}
+
+implementations.push(eleventh)
