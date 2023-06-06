@@ -57,4 +57,23 @@ const eighth = (input: string) => {
   return rest.reverse().join('')
 }
 
-export const implementations: ((input: string) => string)[] = [first, second, third, fourth, fifth, sixth, seventh, eighth]
+const ninth = (input: string) => {
+  const banana: any = {}
+
+  input.split('').forEach((character, index) => {
+    banana[index] = character
+  })
+
+  const properties = Object.entries(banana)
+
+  const sortedArray = properties.sort(([a], [b]) => {
+    return Number(b) - Number(a)
+  })
+
+  return sortedArray.map(([, character]) => {
+    return character
+  }).join('')
+
+}
+
+export const implementations: ((input: string) => string)[] = [first, second, third, fourth, fifth, sixth, seventh, eighth, ninth]

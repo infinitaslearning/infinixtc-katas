@@ -15,4 +15,13 @@ describe('String reversing', () => {
 
     expect(result).toBe('')
   })
+
+  it.each(implementations)('reverses string with repeating characters', (implementation) => {
+    const original = 'abcab'
+    const reversed = 'bacba'
+
+    const result = implementation(original)
+
+    expect(result).toBe(reversed)
+  })
 })
