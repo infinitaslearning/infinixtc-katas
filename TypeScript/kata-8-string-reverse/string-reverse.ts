@@ -70,10 +70,36 @@ const ninth = (input: string) => {
     return Number(b) - Number(a)
   })
 
-  return sortedArray.map(([, character]) => {
-    return character
-  }).join('')
-
+  return sortedArray
+    .map(([, character]) => {
+      return character
+    })
+    .join('')
 }
 
-export const implementations: ((input: string) => string)[] = [first, second, third, fourth, fifth, sixth, seventh, eighth, ninth]
+const tenth = (input: string): string => {
+  const length = input.length
+  const [...characters] = input
+  const midpoint = Math.floor(length / 2)
+
+  for (let i = 0; i <= midpoint; i++) {
+    const swap = characters[i]
+    characters[i] = characters[length - i]
+    characters[length - i] = swap
+  }
+
+  return characters.join('')
+}
+
+export const implementations: ((input: string) => string)[] = [
+  first,
+  second,
+  third,
+  fourth,
+  fifth,
+  sixth,
+  seventh,
+  eighth,
+  ninth,
+  tenth,
+]
