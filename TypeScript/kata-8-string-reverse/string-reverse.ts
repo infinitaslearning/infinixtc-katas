@@ -37,4 +37,9 @@ const fifth = (input: string) => {
   return result
 }
 
-export const implementations: ((input: string) => string)[] = [first, second, third, fourth, fifth]
+const sixth = (input: string): string => {
+  if (input.length <= 1) return input;
+  return sixth(input.substring(1)) + input[0];
+}
+
+export const implementations: ((input: string) => string)[] = [first, second, third, fourth, fifth, sixth]
