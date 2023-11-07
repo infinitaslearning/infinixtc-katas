@@ -5,14 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest run --globals",
+    "test:mocha": "ts-mocha --recursive 'kata-9-ai/**/generated-ai-tennis.test.ts'",
     "tsc": "tsc",
     "prepare": "cd .. && husky install TypeScript/.husky"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^4.3.10",
     "husky": "^8.0.0",
+    "mocha": "^10.2.0",
     "prettier": "2.8.4",
+    "ts-mocha": "^10.0.0",
     "typescript": "^4.9.5",
     "vitest": "^0.31.1"
   }
