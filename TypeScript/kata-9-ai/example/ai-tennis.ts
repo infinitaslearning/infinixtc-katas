@@ -30,17 +30,19 @@ class TennisGame {
         return 'deuce';
       } else if (Math.abs(this.player1Points - this.player2Points) === 1) {
         return `advantage ${this.player1Points > this.player2Points ? this.player1Name : this.player2Name}`;
-      } else {
-        return `game ${this.player1Points > this.player2Points ? this.player1Name : this.player2Name}`;
       }
     }
 
     if (this.player1Points >= 4) {
-      return `game ${this.player1Name}`;
+      if (this.player1Points - this.player2Points >= 2) {
+        return `game ${this.player1Name}`;
+      }
     }
 
     if (this.player2Points >= 4) {
-      return `game ${this.player2Name}`;
+      if (this.player2Points - this.player1Points >= 2) {
+        return `game ${this.player2Name}`;
+      }
     }
 
     if (this.player1Points === this.player2Points) {
@@ -57,4 +59,3 @@ class TennisGame {
 }
 
 export { TennisGame };
-
