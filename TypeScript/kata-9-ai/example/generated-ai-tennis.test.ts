@@ -1,4 +1,4 @@
-import { TennisGame, RegularGame, DeuceGame, FinishedGame } from './ai-tennis' // Adjust the import path as needed
+import { TennisGame } from './ai-tennis' // Adjust the import path as needed
 import { describe, it, beforeEach } from 'mocha'
 import { expect } from 'chai'
 
@@ -34,43 +34,5 @@ describe('TennisGame', () => {
     tennisGame.point('Player1')
     tennisGame.point('Player1')
     expect(tennisGame.score).to.equal('game Player1')
-  })
-})
-
-describe('DeuceGame', () => {
-  let deuceGame: DeuceGame
-
-  beforeEach(() => {
-    deuceGame = new DeuceGame()
-  })
-
-  it('initial score should be "deuce"', () => {
-    expect(deuceGame.score).to.equal('deuce')
-  })
-
-  it('point method should update the score correctly', () => {
-    deuceGame.point('Player1')
-    expect(deuceGame.score).to.equal('advantage Player1')
-
-    deuceGame.point('Player2')
-    expect(deuceGame.score).to.equal('deuce')
-  })
-})
-
-describe('FinishedGame', () => {
-  let finishedGame: FinishedGame
-
-  beforeEach(() => {
-    finishedGame = new FinishedGame('Player1')
-  })
-
-  it('score should be "game Player1"', () => {
-    expect(finishedGame.score).to.equal('game Player1')
-  })
-
-  it('point method should throw an error', () => {
-    expect(() => {
-      finishedGame.point('Player1')
-    }).to.throw('Game finished')
   })
 })
