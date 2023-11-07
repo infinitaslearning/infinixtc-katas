@@ -1,75 +1,76 @@
-import { test } from 'vitest'
-import { TennisGame, RegularGame, DeuceGame, FinishedGame } from './TennisGame' // Adjust the import path as needed
+import { TennisGame, RegularGame, DeuceGame, FinishedGame } from './ai-tennis' // Adjust the import path as needed
+import { describe, it, beforeEach } from 'mocha'
+import { expect } from 'chai'
 
-test('TennisGame', () => {
+describe('TennisGame', () => {
   let tennisGame: TennisGame
 
-  test.beforeEach(() => {
+  beforeEach(() => {
     tennisGame = new TennisGame('Player1', 'Player2')
   })
 
-  test('initial score should be "love all"', () => {
-    assert.is(tennisGame.score, 'love all')
+  it('initial score should be "love all"', () => {
+    expect(tennisGame.score).to.equal('love all')
   })
 
-  test('point method should update the score correctly', () => {
+  it('point method should update the score correctly', () => {
     tennisGame.point('Player1')
-    assert.is(tennisGame.score, '15 love')
+    expect(tennisGame.score).to.equal('15 love')
 
     tennisGame.point('Player2')
-    assert.is(tennisGame.score, '15 all')
+    expect(tennisGame.score).to.equal('15 all')
 
     tennisGame.point('Player1')
     tennisGame.point('Player1')
-    assert.is(tennisGame.score, '40 15')
+    expect(tennisGame.score).to.equal('40 15')
 
     tennisGame.point('Player2')
     tennisGame.point('Player2')
-    assert.is(tennisGame.score, 'deuce')
+    expect(tennisGame.score).to.equal('deuce')
   })
 
-  test('should handle game ending correctly', () => {
+  it('should handle game ending correctly', () => {
     tennisGame.point('Player1')
     tennisGame.point('Player1')
     tennisGame.point('Player1')
-    assert.is(tennisGame.score, 'game Player1')
+    expect(tennisGame.score).to.equal('game Player1')
   })
 })
 
-test('DeuceGame', () => {
+describe('DeuceGame', () => {
   let deuceGame: DeuceGame
 
-  test.beforeEach(() => {
+  beforeEach(() => {
     deuceGame = new DeuceGame()
   })
 
-  test('initial score should be "deuce"', () => {
-    assert.is(deuceGame.score, 'deuce')
+  it('initial score should be "deuce"', () => {
+    expect(deuceGame.score).to.equal('deuce')
   })
 
-  test('point method should update the score correctly', () => {
+  it('point method should update the score correctly', () => {
     deuceGame.point('Player1')
-    assert.is(deuceGame.score, 'advantage Player1')
+    expect(deuceGame.score).to.equal('advantage Player1')
 
     deuceGame.point('Player2')
-    assert.is(deuceGame.score, 'deuce')
+    expect(deuceGame.score).to.equal('deuce')
   })
 })
 
-test('FinishedGame', () => {
+describe('FinishedGame', () => {
   let finishedGame: FinishedGame
 
-  test.beforeEach(() => {
+  beforeEach(() => {
     finishedGame = new FinishedGame('Player1')
   })
 
-  test('score should be "game Player1"', () => {
-    assert.is(finishedGame.score, 'game Player1')
+  it('score should be "game Player1"', () => {
+    expect(finishedGame.score).to.equal('game Player1')
   })
 
-  test('point method should throw an error', () => {
-    assert.throws(() => {
+  it('point method should throw an error', () => {
+    expect(() => {
       finishedGame.point('Player1')
-    }, 'Game finished')
+    }).to.throw('Game finished')
   })
 })
