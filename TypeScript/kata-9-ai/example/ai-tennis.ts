@@ -28,29 +28,31 @@ class TennisGame {
     if (this.player1Points >= 3 && this.player2Points >= 3) {
       if (this.player1Points === this.player2Points) {
         return 'deuce';
-      } else if (this.player1Points - this.player2Points === 1) {
-        return `advantage ${this.player1Name}`;
-      } else if (this.player2Points - this.player1Points === 1) {
-        return `advantage ${this.player2Name}`;
+      } else if (Math.abs(this.player1Points - this.player2Points) === 1) {
+        return `advantage ${this.player1Points > this.player2Points ? this.player1Name : this.player2Name}`;
+      } else {
+        return `game ${this.player1Points > this.player2Points ? this.player1Name : this.player2Name}`;
       }
     }
 
+    if (this.player1Points >= 4) {
+      return `game ${this.player1Name}`;
+    }
+
+    if (this.player2Points >= 4) {
+      return `game ${this.player2Name}`;
+    }
+
+    if (this.player1Points === this.player2Points) {
+      return `${this.translateScore(this.player1Points)} all`;
+    } else {
+      return `${this.translateScore(this.player1Points)}-${this.translateScore(this.player2Points)}`;
+    }
+  }
+
+  private translateScore(score: number): string {
     const scores = ['love', '15', '30', '40'];
-
-    if (this.player1Points >= 3 || this.player2Points >= 3) {
-      if (this.player1Points === this.player2Points) {
-        return 'deuce';
-      } else if (this.player1Points - this.player2Points === 1) {
-        return `advantage ${this.player1Name}`;
-      } else if (this.player2Points - this.player1Points === 1) {
-        return `advantage ${this.player2Name}`;
-      }
-    }
-
-    const player1Score = scores[this.player1Points];
-    const player2Score = scores[this.player2Points];
-
-    return `${player1Score}-${player2Score}`;
+    return scores[score];
   }
 }
 
