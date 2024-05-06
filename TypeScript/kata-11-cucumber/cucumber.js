@@ -1,3 +1,7 @@
 module.exports = {
-  default: `--format-options '{"snippetInterface": "synchronous"}'`
-}
+	default: {
+		requireModule: ["ts-node/register"],
+		paths: ["features/*.feature"],
+		require: ["features/step-definitions/**/*.ts"],
+	},
+};

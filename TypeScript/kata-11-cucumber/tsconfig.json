@@ -1,0 +1,9 @@
+{
+  "extends": "@infinitaslearning/module-typescript-configs/tsconfig.node.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src", // set rootDir as required
+    "baseUrl": "."
+  },
+  "include": ["src"]  // set include as required
+}
